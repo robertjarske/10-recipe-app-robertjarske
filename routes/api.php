@@ -22,16 +22,14 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function() {
 
 });
 
-    Route::resource('recipe', 'RecipeController');
+Route::resource('recipe', 'RecipeController');
 
-    Route::resource('lists', 'ListsController');
+Route::resource('lists', 'ListsController');
 
-    Route::get('/listrecipes', 'ListRecipesController@index');
-    Route::get('/listrecipes/{id}', 'ListRecipesController@show');
-    Route::delete('/listrecipes/{listId}/{recipeId}', 'ListRecipesController@destroy');
-    
-    
-    Route::group(['middleware' => 'cors'], function() {
-        Route::post('/save', 'ListRecipesController@store');
+Route::get('/listrecipes', 'ListRecipesController@index');
+Route::get('/listrecipes/{id}', 'ListRecipesController@show');
+Route::delete('/listrecipes/{listId}/{recipeId}', 'ListRecipesController@destroy');
 
-    });
+Route::group(['middleware' => 'cors'], function() {
+    Route::post('/save', 'ListRecipesController@store');
+});

@@ -32,8 +32,6 @@ class ListsController extends Controller
 
         Lists::create($list);
         return response(200);
-                
-
     }
 
     public function show($id)
