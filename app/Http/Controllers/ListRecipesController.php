@@ -34,8 +34,8 @@ class ListRecipesController extends Controller
     public function destroy($listId, $recipeId) 
     {
         $id = ListRecipes::all()->where('list_id', $listId)->where('recipe_id', $recipeId)->toArray();
-        dd($id);
-        $list = ListRecipes::find($id[0]['id']);
+        $firstResponse = reset($id);
+        $list = ListRecipes::find($firstResponse['id']);
         $list->delete();
 
         
