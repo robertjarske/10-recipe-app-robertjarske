@@ -27,13 +27,13 @@ class ListRecipesController extends Controller
 
     public function show($id)
     {
-
-        $list = ListRecipes::all()->where('list_id', $id);
+        $list = ListRecipes::all()->where('list_id', $id)->toArray();
         return $list;
     }
 
-    public function destroy($listId, $recipeId) {
-
+    public function destroy($listId, $recipeId) 
+    {
+        dd($listId);
         $id = ListRecipes::all()->where('list_id', $listId)->where('recipe_id', $recipeId)->toArray();
         $list = ListRecipes::find($id[0]['id']);
         $list->delete();
